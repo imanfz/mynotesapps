@@ -12,7 +12,10 @@ class MainViewModel(application: Application) : ViewModel() {
     private val mNoteRepository: NoteRepository = NoteRepository(application)
 
     //fun getAllNotes(): LiveData<List<Note>> = mNoteRepository.getAllNotes()
-    /* LivePagedListBuilder digunakan untuk merubah DataSource menjadi PagedList dalam bentuk LiveData.
-    PagedList adalah daftar yang memuat data dalam potongan (halaman) dari DataSource. */
-    fun getAllNotes(): LiveData<PagedList<Note>> = LivePagedListBuilder(mNoteRepository.getAllNotes(), 20).build()
+/*    *//* LivePagedListBuilder digunakan untuk merubah DataSource menjadi PagedList dalam bentuk LiveData.
+    PagedList adalah daftar yang memuat data dalam potongan (halaman) dari DataSource. *//*
+    fun getAllNotes(): LiveData<PagedList<Note>> = LivePagedListBuilder(mNoteRepository.getAllNotes(), 20).build()*/
+    fun getAllNotes(sort: String): LiveData<PagedList<Note>> {
+        return LivePagedListBuilder(mNoteRepository.getAllNotes(sort), 20).build()
+    }
 }
